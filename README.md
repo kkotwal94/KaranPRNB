@@ -4,12 +4,12 @@
 
 ### Mock Reddit Example
 
--Set up index.js [Entry point], webpack-2 files for production and development environment
--Set up webpack hot reloader
--Set up mock components and routes (/index and /about)
--Set up express
--Set up route matching between express
--Set up API routes for authentication, user, subreddits, posts, comments, upvotes
--Set up base components for user profile page, login page, subreddit browse page, posts page
--Set up React-Router / React-Router-Redux to show different routes in browser url
--Set up database models for user, subreddits, posts, comments, and permissions
+- Set up index.js [Entry point], webpack-2 files for production and development environment
+- Set up webpack hot reloader
+- Set up mock components and routes (/index and /about)
+- Set up express
+- Set up route matching between express
+- Set up API routes for authentication, user, subreddits, posts, comments, upvotes
+- Set up base components for user profile page, login page, subreddit browse page, posts page
+- Set up React-Router / React-Router-Redux to show different routes in browser url
+- Set up database models for user, subreddits, posts, comments, and permissions
