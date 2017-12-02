@@ -1,0 +1,11 @@
+{
+  "name": "karannrb",
+  "version": "1.0.0",
+  "description": "A boiler plate I use to start server sided rendering react apps",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Karan Kotwal",
+  "license": "ISC"
+}
