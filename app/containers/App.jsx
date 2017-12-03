@@ -1,4 +1,5 @@
 import React from 'react';
+import Navigation from '../containers/Navigation';
 import PropTypes from 'prop-types';
 
 
@@ -17,6 +18,7 @@ import PropTypes from 'prop-types';
 const App = ({ children }) => {
   return (
     <div>
+      <Navigation/>
       {children}
     </div>
   );
