@@ -2,7 +2,7 @@
 
 # Features / To Do List
 
-### Mock Reddit Example
+### PassTheAux
 
 - ~~Set up index.js [Entry point], webpack-2 files for production and development environment~~
 - ~~Set up webpack hot reloader~~
@@ -12,5 +12,5 @@
 - Set up Server side rendering for material ui / css
 - Set up API routes for authentication, user, lobby, playlist, posts, comments, upvotes
 - Set up base components for user profile page, login page, lobby browse page, posts page
-- ~~Set up React-Router / React-Router-Redux to show different routes in browser url
+- ~~Set up React-Router / React-Router-Redux to show different routes in browser url~~
 - Set up database models for user, lobbies, posts, comments, and permissions
