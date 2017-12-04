@@ -1,0 +1,17 @@
+
+.app {
+  height: 100%;
+  font-weight: normal;
+  font-smoothing: antialiased;
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  margin: 0;
+  color: black;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}

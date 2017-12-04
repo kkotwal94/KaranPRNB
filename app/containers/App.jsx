@@ -1,10 +1,22 @@
 import React from 'react';
 import Navigation from '../containers/Navigation';
+import Footer from '../containers/Footer';
 import PropTypes from 'prop-types';
-
-
-// const cx = classNames.bind(styles);
-
+import classNames from 'classnames/bind';
+import styles from '../css/main';
+import red from 'material-ui/colors/red';
+import deepOrange from 'material-ui/colors/deepOrange';
+import lightBlue from 'material-ui/colors/lightBlue';
+import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
+const cx = classNames.bind(styles);
+// Justifying my own MuiThemeProvider theme
+const theme = createMuiTheme({
+  palette: {
+    primary: deepOrange,
+    secondary: lightBlue,
+    error: red,
+  },
+});
 
 /*
  * React-router's <Router> component renders <Route>'s
@@ -17,10 +29,13 @@ import PropTypes from 'prop-types';
  */
 const App = ({ children }) => {
   return (
-    <div>
-      <Navigation/>
-      {children}
-    </div>
+    <MuiThemeProvider theme={theme}>
+      <div className={cx('app')}>
+        <Navigation />
+        {children}
+        <Footer />
+      </div>
+    </MuiThemeProvider>
   );
 };
 

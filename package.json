@@ -4,7 +4,7 @@
   "description": "A boiler plate I use to start server sided rendering react apps",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha ./app/tests/setup.js --compilers css:./app/tests/compilers/css ./app/**/*-test.js",
     "sequelize": "node_modules/.bin/sequelize",
     "lint": "eslint --ext .js,.jsx app server",
     "lint:fix": "eslint --ext .js,.jsx app server --fix",
@@ -14,7 +14,6 @@
     "build:dev": "cross-env NODE_ENV=development npm run webpack -- --env.server",
     "build": "npm run clean && cross-env NODE_ENV=production npm run webpack -- --env.browser && cross-env NODE_ENV=production npm run webpack -- --env.server",
     "webpack": "webpack --colors --display-error-details --config ./webpack/webpack.config.js",
-    "test": "mocha ./app/tests/setup.js --compilers css:./app/tests/compilers/css ./app/**/*-test.js",
     "test:watch": "mocha ./app/tests/setup.js --watch --compilers css:./app/tests/compilers/css ./app/**/*-test.js"
   },
   "author": "Karan Kotwal",
@@ -38,7 +37,7 @@
     "sinon": "^2.1.0"
   },
   "engines": {
-   "node": ">=6.x"
+    "node": ">=6.x"
   },
   "dependencies": {
     "autoprefixer": "^6.7.7",
@@ -71,6 +70,8 @@
     "helmet": "^3.5.0",
     "json-loader": "^0.5.4",
     "lodash": "^4.16.2",
+    "material-ui": "^1.0.0-beta.22",
+    "material-ui-icons": "^1.0.0-beta.17",
     "method-override": "^2.3.8",
     "passport": "^0.3.2",
     "passport-google-oauth": "^1.0.0",
