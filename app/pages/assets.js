@@ -7,7 +7,7 @@ const metaAssets = () => {
     { charset: 'utf-8' },
     // Meta descriptions are commonly used on search engine result pages to
     // display preview snippets for a given page.
-    { name: 'description', content: 'KaReddit' },
+    { name: 'description', content: 'PassTheAux' },
     // Setting IE=edge tells Internet Explorer to use the latest engine to
     //  render the page and execute Javascript
     { 'http-equiv': 'X-UA-Compatible', content: 'IE=edge' },
@@ -26,7 +26,7 @@ const metaAssets = () => {
     // Add to homescreen for Safari on IOS
     { name: 'apple-mobile-web-app-capable', content: 'yes' },
     { name: 'apple-mobile-web-app-status-bar-style', content: 'black' },
-    { name: 'apple-mobile-web-app-title', content: 'Kareddit' },
+    { name: 'apple-mobile-web-app-title', content: 'PassTheAux' },
     // Tile icon for Win8 (144x144 + tile color)
   ];
 };
@@ -35,6 +35,6 @@ const linkAssets = () => {
   return [];
 };
 
-export const title = 'reactGo - just ship it';
+export const title = 'PassTheAux';
 export const meta = metaAssets();
 export const link = linkAssets();
