@@ -22,7 +22,7 @@ module.exports = (env = {}) => {
     externals,
     output: {
       path: PATHS.compiled,
-      filename: '[name.js]',
+      filename: 'server.js',
       publicPath: PATHS.public,
       libraryTarget: 'commonjs2'
     },

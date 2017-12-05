@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import Navigation from '../containers/Navigation';
 import Footer from '../containers/Footer';
 import PropTypes from 'prop-types';
@@ -27,17 +27,29 @@ const theme = createMuiTheme({
  * A better explanation of react-router is available here:
  * https://github.com/rackt/react-router/blob/latest/docs/Introduction.md
  */
-const App = ({ children }) => {
-  return (
-    <MuiThemeProvider theme={theme}>
-      <div className={cx('app')}>
-        <Navigation />
-        {children}
-        <Footer />
-      </div>
-    </MuiThemeProvider>
-  );
-};
+class App extends Component {
+  constructor(props){
+    super(props);
+  }
+
+  componentDidMount() {
+   const jssStyles = document.getElementById('jss-server-side');
+   if (jssStyles && jssStyles.parentNode) {
+     jssStyles.parentNode.removeChild(jssStyles);
+   }
+  }
+  render() {
+    return (
+      <MuiThemeProvider theme={theme}>
+        <div className={cx('app')}>
+          <Navigation />
+          {this.props.children}
+          <Footer />
+        </div>
+      </MuiThemeProvider>
+    );
+  }
+}
 
 App.propTypes = {
   children: PropTypes.object
