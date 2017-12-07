@@ -7,9 +7,9 @@ import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';
 import IconButton from 'material-ui/IconButton';
 import MenuIcon from 'material-ui-icons/Menu';
-import { withStyles } from 'material-ui/styles';
+import injectSheet from 'react-jss';
 import styles from '../css/components/navigation.css';
-
+const cx = classNames.bind(styles);
 // import passTheAuxLogo from '../images/PassTheAux.png';
 
 const styleSheet = ({
@@ -32,8 +32,6 @@ navCenter: {
 },
 });
 
-const cx = classNames.bind(styles);
-
 class Navigation extends Component {
 
   constructor(props) {
@@ -44,17 +42,17 @@ class Navigation extends Component {
     const mobile = this.mobile;
     const { classes } = this.props;
     return (
-      <div className={classes.appbar}>
+      <div className={cx('appbar')}>
         <AppBar position="static" color="primary">
           <Toolbar>
             {mobile && (
-            <IconButton className={classes.menuButton} color="contrast" aria-label="Menu">
+            <IconButton className={cx('menu-button')} color="contrast" aria-label="Menu">
               <MenuIcon />
             </IconButton>)}
             <Typography type="title" color="inherit" className={cx('flex')}>
               PassTheAux
             </Typography>
-            <div className={classes.navCenter}>
+            <div className={cx('nav-center')}>
               <Link to="/dashboard">
                 <Button color="contrast">Dashboard</Button>
               </Link>
@@ -78,4 +76,4 @@ class Navigation extends Component {
 }
 
 
-export default withStyles(styleSheet)(Navigation);
+export default (Navigation);

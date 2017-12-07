@@ -25,11 +25,8 @@ const theme = createMuiTheme({
   },
 });
 
-// Configure JSS
-const jss = create(preset());
-jss.options.createGenerateClassName = createGenerateClassName;
 
-const createApp = (store, props) => renderToString(
+const createApp = (store, props, jss) => renderToString(
   <JssProvider registry={sheetsRegistry} jss={jss}>
     <MuiThemeProvider theme={theme} sheetsManager={new Map()}>
       <Provider store={store}>
@@ -39,8 +36,8 @@ const createApp = (store, props) => renderToString(
   </JssProvider>
 );
 
-//Grab our css from our sheetsRegistry
-const registeredCss = sheetsRegistry.toString();
+// Grab our css from our sheetsRegistry
+
 
 const buildPage = ({ componentHTML, initialState, headAssets, css }) => {
   return `
@@ -52,22 +49,22 @@ const buildPage = ({ componentHTML, initialState, headAssets, css }) => {
     ${headAssets.link.toString()}
     ${staticAssets.createStylesheets()}
     ${staticAssets.createTrackingScript()}
-
+    <style id="jss-server-side" type="text/css">${css}</style>
   </head>
   <body>
     <div id="app">${componentHTML}</div>
     <script>window.__INITIAL_STATE__ = ${serialize(initialState)}</script>
     ${staticAssets.createAppScript()}
-    <style id="jss-server-side" type="text/css">${css}</style>
   </body>
 </html>`;
 };
 
 export default (store, props) => {
   const initialState = store.getState();
-  const componentHTML = createApp(store, props);
+  const jss = create(preset());
+  jss.options.createGenerateClassName = createGenerateClassName;
+  const componentHTML = createApp(store, props, jss);
   const headAssets = Helmet.renderStatic();
-  const css = registeredCss;
-  console.log(css);
+  const css = sheetsRegistry.toString();
   return buildPage({ componentHTML, initialState, headAssets, css });
 };

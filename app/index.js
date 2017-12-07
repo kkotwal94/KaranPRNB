@@ -39,10 +39,16 @@ function onUpdate() {
 }
 
 // Router converts <Route> element hierarchy to a route config:
+// We also remove jss here instead of our app page
 // Read more https://github.com/rackt/react-router/blob/latest/docs/Glossary.md#routeconfig
 render(
   <Provider store={store}>
     <Router history={history} onUpdate={onUpdate}>
       {routes}
     </Router>
-  </Provider>, document.getElementById('app'));
+  </Provider>, document.getElementById('app'), () => {
+    const jssStyles = document.getElementById('jss-server-side');
+    if (jssStyles && jssStyles.parentNode) {
+      jssStyles.parentNode.removeChild(jssStyles);
+    }
+  });

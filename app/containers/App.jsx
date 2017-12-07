@@ -25,19 +25,17 @@ const theme = createMuiTheme({
  * Please refer to `routes.jsx` for the route config.
  *
  * A better explanation of react-router is available here:
- * https://github.com/rackt/react-router/blob/latest/docs/Introduction.md
+ * https://github.class name {
+   constructor(arguments) {
+
+   }
+ }om/rackt/react-router/blob/latest/docs/Introduction.md
  */
 class App extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
   }
 
-  componentDidMount() {
-   const jssStyles = document.getElementById('jss-server-side');
-   if (jssStyles && jssStyles.parentNode) {
-     jssStyles.parentNode.removeChild(jssStyles);
-   }
-  }
   render() {
     return (
       <MuiThemeProvider theme={theme}>
