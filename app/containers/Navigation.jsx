@@ -36,7 +36,7 @@ class Navigation extends Component {
 
   constructor(props) {
     super(props);
-    this.mobile = false;
+    this.mobile = false ;
   }
   render() {
     const mobile = this.mobile;
