@@ -41,7 +41,9 @@ class App extends Component {
       <MuiThemeProvider theme={theme}>
         <div className={cx('app')}>
           <Navigation />
-          {this.props.children}
+          <div className={cx('content-wrapper')}>
+            {this.props.children}
+          </div>
           <Footer />
         </div>
       </MuiThemeProvider>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Page from '../pages/Page';
-import SignupContainer from '../containers/Signup.jsx';
+import SignupContainer from '../containers/Signup';
 
 class Signup extends Component {
   getMetaData() {

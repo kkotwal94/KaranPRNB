@@ -1,3 +1,12 @@
+body {
+  margin: 0;
+  color: black;
+  height: 100%;
+}
+
+html {
+  height: 100%;
+}
 
 .app {
   height: 100%;
@@ -6,11 +15,17 @@
   font-family: 'Roboto', sans-serif;
 }
 
-body {
-  margin: 0;
-  color: black;
+.content-wrapper {
+  height:80%;
 }
 
+.content-wrapper > div {
+  height: 100%;
+}
+
+div[data-reactroot] {
+    height: 100%;
+}
 a {
   text-decoration: none;
   color: black;

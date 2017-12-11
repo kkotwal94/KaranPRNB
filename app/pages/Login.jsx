@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Page from '../pages/Page';
-import LoginContainer from '../containers/Login.jsx';
+import LoginContainer from '../containers/Login';
 
 class Login extends Component {
   getMetaData() {

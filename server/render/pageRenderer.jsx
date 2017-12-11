@@ -52,7 +52,7 @@ const buildPage = ({ componentHTML, initialState, headAssets, css }) => {
     <style id="jss-server-side" type="text/css">${css}</style>
   </head>
   <body>
-    <div id="app">${componentHTML}</div>
+    <div id="app" style="height:100%">${componentHTML}</div>
     <script>window.__INITIAL_STATE__ = ${serialize(initialState)}</script>
     ${staticAssets.createAppScript()}
   </body>

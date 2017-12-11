@@ -50,7 +50,9 @@ class Navigation extends Component {
               <MenuIcon />
             </IconButton>)}
             <Typography type="title" color="inherit" className={cx('flex')}>
-              PassTheAux
+              <Link to="/">
+                PassTheAux
+              </Link>
             </Typography>
             <div className={cx('nav-center')}>
               <Link to="/dashboard">
