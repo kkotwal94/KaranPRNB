@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Navigation from '../containers/Navigation';
-import Footer from '../containers/Footer';
+import Footer from '../components/Footer';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import styles from '../css/main';
