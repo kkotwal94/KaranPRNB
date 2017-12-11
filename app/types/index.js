@@ -1,5 +1,43 @@
+/*
+ * Message Types
+ */
 export const DISMISS_MESSAGE = 'DISMISS_MESSAGE';
 
+/*
+ * Request Types
+ */
 export const CREATE_REQUEST = 'CREATE_REQUEST';
 export const REQUEST_SUCCESS = 'REQUEST_SUCCESS';
 export const REQUEST_FAILURE = 'REQUEST_FAILURE';
+
+/*
+ * Login Types
+ */
+export const MANUAL_LOGIN_USER = 'MANUAL_LOGIN_USER';
+export const LOGIN_SUCCESS_USER = 'LOGIN_SUCCESS_USER';
+export const LOGIN_ERROR_USER = 'LOGIN_ERROR_USER';
+
+/*
+ * Signup Types
+ */
+export const SIGNUP_USER = 'SIGNUP_USER';
+export const SIGNUP_SUCCESS_USER = 'SIGNUP_SUCCESS_USER';
+export const SIGNUP_ERROR_USER = 'SIGNUP_ERROR_USER';
+
+/*
+ * Logout Types
+ */
+export const LOGOUT_USER = 'LOGOUT_USER';
+export const LOGOUT_SUCCESS_USER = 'LOGOUT_SUCCESS_USER';
+export const LOGOUT_ERROR_USER = 'LOGOUT_ERROR_USER';
+
+
+/*
+ * Profile Types
+ */
+ export const REQUEST_USER_PROFILE = 'REQUEST_USER_PROFILE';
+ export const REQUEST_USER_PROFILE_SUCCESS = 'REQUEST_USER_PROFILE_SUCCESS';
+ export const REQUEST_USER_PROFILE_ERROR = 'REQUEST_USER_PROFILE_ERROR';
+ export const UPDATE_USER_PROFILE = 'UPDATE_USER_PROFILE';
+ export const UPDATE_USER_PROFILE_SUCCESS = 'UPDATE_USER_PROFILE_SUCCESS';
+ export const UPDATE_USER_PROFILE_ERROR = 'UPDATE_USER_PROFILE_ERROR';

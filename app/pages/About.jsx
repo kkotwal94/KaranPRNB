@@ -12,7 +12,7 @@ class About extends Component {
   }
 
   pageTitle = () => {
-    return 'About | KaReddit';
+    return 'About | PassTheAux';
   };
 
   pageMeta = () => {

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Page from '../pages/Page';
-import DashboardContainer from '../containers/Dashboard';
+import LoginContainer from '../containers/Login.jsx';
 
-class Dashboard extends Component {
+class Login extends Component {
   getMetaData() {
     return {
       title: this.pageTitle(),
@@ -12,12 +12,12 @@ class Dashboard extends Component {
   }
 
   pageTitle = () => {
-    return 'Dashboard | PassTheAux';
+    return 'Login | PassTheAux';
   };
 
   pageMeta = () => {
     return [
-      { name: 'description', content: 'PassTheAux Dashboard' }
+      { name: 'description', content: 'PassTheAux Login' }
     ];
   };
 
@@ -28,10 +28,10 @@ class Dashboard extends Component {
   render() {
     return (
       <Page {...this.getMetaData()}>
-        <DashboardContainer {...this.props} />
+        <LoginContainer {...this.props} />
       </Page>
     );
   }
 }
 
-export default Dashboard;
+export default Login;

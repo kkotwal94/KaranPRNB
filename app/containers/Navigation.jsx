@@ -65,9 +65,13 @@ class Navigation extends Component {
                 <Button color="contrast">404 Not Found</Button>
               </Link>
             </div>
-            <Button color="contrast">Log In</Button>
+            <Link to="/login">
+              <Button color="contrast">Log In</Button>
+            </Link>
             |
-            <Button color="contrast">Sign up</Button>
+            <Link to="/register">
+              <Button color="contrast">Sign up</Button>
+            </Link>
           </Toolbar>
         </AppBar>
       </div>

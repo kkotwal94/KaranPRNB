@@ -11,13 +11,15 @@ import fetchDataForRoute from '../../app/utils/fetchDataForRoute';
  * and pass it into the Router.run function.
  */
 export default function render(req, res) {
-  // const authenticated = req.isAuthenticated();
+  const authenticated = req.isAuthenticated();
+  const profile = authenticated ? req.user : {};
   const history = createMemoryHistory();
   const store = configureStore({
     user: {
+      profile,
+      authenticated,
       isWaiting: false,
       message: '',
-      isLogin: true
     }
   }, history);
   const routes = createRoutes(store);
