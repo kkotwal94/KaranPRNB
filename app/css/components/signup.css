@@ -5,8 +5,41 @@
 }
 
 .register-title {
-  margin: 0;
+  text-align: center;
+  height:50px;
+  line-height:50px;
+  background-color: #3F51B5;
+}
+.register-title {
+  margin:0 auto;
+}
+.register-title-text {
+  color: black;
 }
 .signup-page {
   background-color: #ff5722;
+}
+
+.register-grid {
+  top: 10vh;
+  position: relative;
+}
+
+.register-module {
+  margin: 0 auto;
+}
+.register-textfield {
+  text-align: center;
+}
+
+.register-align {
+  text-align: center;
+}
+
+.register-parent-grid {
+}
+
+.register-paper {
+  padding: 20px;
+  background-color: #3F51B5;
 }

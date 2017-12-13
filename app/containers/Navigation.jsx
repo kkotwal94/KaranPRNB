@@ -7,43 +7,23 @@ import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';
 import IconButton from 'material-ui/IconButton';
 import MenuIcon from 'material-ui-icons/Menu';
-import injectSheet from 'react-jss';
 import styles from '../css/components/navigation.css';
+
 const cx = classNames.bind(styles);
 // import passTheAuxLogo from '../images/PassTheAux.png';
-
-const styleSheet = ({
-appbar: {
-  width: '100%',
-},
-
-flex: {
-
-},
-
-menuButton: {
-  marginLeft: -12,
-  marginRight: 20,
-},
-
-navCenter: {
-  display: 'flex',
-  flex: 1
-},
-});
 
 class Navigation extends Component {
 
   constructor(props) {
     super(props);
-    this.mobile = false ;
+    this.mobile = false;
   }
   render() {
     const mobile = this.mobile;
     const { classes } = this.props;
     return (
       <div className={cx('appbar')}>
-        <AppBar position="static" color="primary">
+        <AppBar position="static" color="primary" className={cx('navigation')}>
           <Toolbar>
             {mobile && (
             <IconButton className={cx('menu-button')} color="contrast" aria-label="Menu">

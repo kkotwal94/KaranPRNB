@@ -5,9 +5,12 @@
 }
 
 .flex {
-  
+
 }
 
+.navigation {
+  height: 10%;
+}
 .menu-button {
   margin-left: -12;
   margin-right: 20,

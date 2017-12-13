@@ -1,19 +1,21 @@
 import React, {Component} from 'react';
-import Navigation from '../containers/Navigation';
-import Footer from '../components/Footer';
-import PropTypes from 'prop-types';
-import classNames from 'classnames/bind';
-import styles from '../css/main';
 import red from 'material-ui/colors/red';
 import deepOrange from 'material-ui/colors/deepOrange';
-import lightBlue from 'material-ui/colors/lightBlue';
+import indigo from 'material-ui/colors/indigo';
+import PropTypes from 'prop-types';
+import classNames from 'classnames/bind';
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
+import Navigation from '../containers/Navigation';
+import Footer from '../components/Footer';
+import styles from '../css/main.css';
+
+
 const cx = classNames.bind(styles);
 // Justifying my own MuiThemeProvider theme
 const theme = createMuiTheme({
   palette: {
     primary: deepOrange,
-    secondary: lightBlue,
+    secondary: indigo,
     error: red,
   },
 });

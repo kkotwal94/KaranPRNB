@@ -10,7 +10,7 @@ import { SheetsRegistry } from 'react-jss/lib/jss';
 import JssProvider from 'react-jss/lib/JssProvider';
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
 import createGenerateClassName from 'material-ui/styles/createGenerateClassName';
-import { deepOrange, lightBlue, red } from 'material-ui/colors';
+import { deepOrange, indigo, red } from 'material-ui/colors';
 import staticAssets from './static-assets';
 // import rtl from 'jss-rtl'; // in-case you're supporting rtl
 
@@ -20,7 +20,7 @@ const sheetsRegistry = new SheetsRegistry();
 const theme = createMuiTheme({
   palette: {
     primary: deepOrange,
-    secondary: lightBlue,
+    secondary: indigo,
     error: red,
   },
 });

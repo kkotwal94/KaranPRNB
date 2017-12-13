@@ -7,7 +7,7 @@ const cx = classNames.bind(styles);
 const Footer = () => {
   return (
     <div className={cx('footer')}>
-      <p>This should be a footer</p>
+      <p className={cx('footer-text')}>This should be a footer</p>
     </div>
   );
 };

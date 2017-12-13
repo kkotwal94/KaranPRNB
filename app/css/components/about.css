@@ -5,3 +5,7 @@
     background-color: #FF6700;
     flex: 1 1 auto;
 }
+
+.about-text {
+  margin: 0
+}

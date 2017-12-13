@@ -16,7 +16,7 @@ html {
 }
 
 .content-wrapper {
-  height:80%;
+  height:calc(94% - 64px);
 }
 
 .content-wrapper > div {
