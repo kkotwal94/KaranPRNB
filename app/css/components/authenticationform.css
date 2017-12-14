@@ -1,0 +1,45 @@
+.authentication {
+    height: 100%;
+    background-color: #ff5722;
+    margin: 0;
+}
+
+.authentication-title {
+  text-align: center;
+  height:50px;
+  line-height:50px;
+  background-color: #3F51B5;
+}
+.authentication-title {
+  margin:0 auto;
+}
+.authentication-title-text {
+  color: black;
+}
+.signup-page {
+  background-color: #ff5722;
+}
+
+.authentication-grid {
+  top: 10vh;
+  position: relative;
+}
+
+.authentication-module {
+  margin: 0 auto;
+}
+.authentication-textfield {
+  text-align: center;
+}
+
+.authentication-align {
+  text-align: center;
+}
+
+.authentication-parent-grid {
+}
+
+.authentication-paper {
+  padding: 20px;
+  background-color: #3F51B5;
+}
