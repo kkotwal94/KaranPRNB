@@ -14,8 +14,8 @@ class Signup extends Component {
     super(props);
     this.handleOnSubmit = this.handleOnSubmit.bind(this);
     this.handleEmailChange = this.handleEmailChange.bind(this);
-    this.handlePasswordChange = this.handleEmailChange.bind(this);
-    this.handleVerifyPasswordChange = this.handleEmailChange.bind(this);
+    this.handlePasswordChange = this.handlePasswordChange.bind(this);
+    this.handleVerifyPasswordChange = this.handleVerifyPasswordChange.bind(this);
     this.state = {email: '', password: '', verifyPassword: ''};
     this.inputs = [{label: 'Username', onChange: this.handleEmailChange},
                    {label: 'Password', password: true, onChange: this.handlePasswordChange},

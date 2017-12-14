@@ -13,15 +13,32 @@ class Login extends Component {
   constructor(props) {
     super(props);
     this.handleOnSubmit = this.handleOnSubmit.bind(this);
-    this.inputs = [{label: 'Username'}, {label: 'Password', password: true}];
+    this.handleEmailChange = this.handleEmailChange.bind(this);
+    this.handlePasswordChange = this.handlePasswordChange.bind(this);
+    this.state = {email: '', password: ''};
+    this.inputs = [{label: 'Username', onChange: this.handleEmailChange},
+                   {label: 'Password', password: true, onChange: this.handlePasswordChange}];
     this.formSubmitText = 'Login';
+  }
+
+  handleEmailChange = (event) => {
+    console.log('Email changing');
+    // event.persist(); //This allows are synthetic method to propogate the correct values
+    this.setState({email: event.target.value});
+  }
+
+  handlePasswordChange = (event) => {
+    console.log('Password changing');
+    this.setState({password: event.target.value});
   }
 
   handleOnSubmit(event) {
     event.preventDefault();
-    const email = this.email.input.value;
-    const password = this.password.input.value;
+    const email = this.state.email;
+    const password = this.state.password;
     console.log('Login submitting!');
+    console.log(email);
+    console.log(password);
     manualLogin({email, password});
   }
 
