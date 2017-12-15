@@ -77,13 +77,13 @@ const profile = (
     default:
       return state;
   }
-}
+};
 
 const userReducer = combineReducers({
   isWaiting,
   authenticated,
   message,
-  profile
+  profile,
 });
 
 export default userReducer;

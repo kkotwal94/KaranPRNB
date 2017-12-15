@@ -11,21 +11,17 @@ import styles from '../css/components/authenticationform.css';
 const cx = classNames.bind(styles);
 
 class AuthenticationForm extends Component {
-
-  constructor(props) {
-    super(props);
-  }
   render() {
     console.log(this.props.inputs);
-    let inputs = (
+    const inputs = (
       this.props.inputs.map((input, i) =>
         <Grid item key={'signup-text-' + i}>
           <TextField
               id={'username' + i}
               label={input.label}
               placeholder={input.label}
+              inputRef={input.ref}
               required
-              onChange={input.onChange}
               type={input.password ? 'password' : ''}
               autoComplete="off"
               className={cx('authentication-textfield')}
@@ -46,7 +42,7 @@ class AuthenticationForm extends Component {
               <Grid container direction="column" justify="center" alignItems="center" className={cx('authentication-align')}>
                 {inputs}
                 <Button raised color="primary" type="submit">
-                  Create
+                  {this.props.formSubmitText}
                   {this.props.formSubmitIcon}
                 </Button>
               </Grid>
@@ -54,7 +50,7 @@ class AuthenticationForm extends Component {
           </Grid>
         </Paper>
       </div>
-    )
+    );
   }
 }
 

@@ -13,37 +13,17 @@ class Signup extends Component {
   constructor(props) {
     super(props);
     this.handleOnSubmit = this.handleOnSubmit.bind(this);
-    this.handleEmailChange = this.handleEmailChange.bind(this);
-    this.handlePasswordChange = this.handlePasswordChange.bind(this);
-    this.handleVerifyPasswordChange = this.handleVerifyPasswordChange.bind(this);
-    this.state = {email: '', password: '', verifyPassword: ''};
-    this.inputs = [{label: 'Username', onChange: this.handleEmailChange},
-                   {label: 'Password', password: true, onChange: this.handlePasswordChange},
-                   {label: 'Verify Password', password: true, onChange: this.handleVerifyPasswordChange}];
+    this.inputs = [{label: 'Username', ref: (el) => { this.userNameTextField = el; }},
+                   {label: 'Password', password: true, ref: (el) => { this.passwordTextField = el; }},
+                   {label: 'Verify Password', password: true, ref: (el) => { this.passwordVerifyTextField = el; }}];
     this.formSubmitText = 'Sign up';
-  }
-
-  handleEmailChange = (event) => {
-    console.log("Email changing");
-    //event.persist(); //This allows are synthetic method to propogate the correct values
-    this.setState({email: event.target.value});
-  }
-
-  handlePasswordChange = (event) => {
-    console.log("Password changing");
-    this.setState({password: event.target.value});
-  }
-
-  handleVerifyPasswordChange = (event) => {
-    console.log("Other password changing");
-    this.setState({verifyPassword: event.target.value});
   }
 
   handleOnSubmit = (event) => {
     event.preventDefault();
-    const email = this.state.email;
-    const password = this.state.password;
-    const verifyPassword = this.state.verifyPassword;
+    const email = this.userNameTextField.value;
+    const password = this.passwordTextField.value;
+    const verifyPassword = this.passwordVerifyTextField.value;
     console.log('Sign up submitting!');
     console.log(email);
     console.log(password);
@@ -55,8 +35,8 @@ class Signup extends Component {
     }
   }
   render() {
-    let inputs = this.inputs;
-    let formSubmitText = this.formSubmitText;
+    const inputs = this.inputs;
+    const formSubmitText = this.formSubmitText;
     return (
       <AuthenticationLayout>
         <AuthenticationForm
