@@ -6,13 +6,15 @@ import Paper from 'material-ui/Paper';
 import Grid from 'material-ui/Grid';
 import Button from 'material-ui/Button';
 import TextField from 'material-ui/TextField';
+import { CircularProgress } from 'material-ui/Progress';
 import styles from '../css/components/authenticationform.css';
 
 const cx = classNames.bind(styles);
 
 class AuthenticationForm extends Component {
-  render() {
-    console.log(this.props.inputs);
+
+  determineRender() {
+    const { isWaiting, authenticated, message} = this.props;
     const inputs = (
       this.props.inputs.map((input, i) =>
         <Grid item key={'signup-text-' + i}>
@@ -29,24 +31,47 @@ class AuthenticationForm extends Component {
         </Grid>
         )
     );
+    console.log(this.props.inputs);
+    console.log(isWaiting);
+    console.log(authenticated);
+    if (isWaiting) {
+      return (
+        <div>
+          <CircularProgress size={50} />
+        </div>
+      );
+    }
+    else if (authenticated) {
+      return (
+        <p>
+          You are now authenticated!
+        </p>
+    );
+    }
+      return (
+        <form onSubmit={this.props.formSubmit}>
+          <Grid container direction="column" justify="center" alignItems="center" className={cx('authentication-align')}>
+            {inputs}
+            <Button raised color="primary" type="submit">
+              {this.props.formSubmitText}
+              {this.props.formSubmitIcon}
+            </Button>
+          </Grid>
+        </form>
+    );
+}
+
+  render() {
     return (
       <div>
-        <AppBar position="relative" color="primary" className={cx('authentication-title')}>
+        <AppBar position="static" color="primary" className={cx('authentication-title')}>
           <div className={cx('authentication-title-text')}>
             {this.props.title}
           </div>
         </AppBar>
         <Paper className={cx('authentication-paper')}>
           <Grid className={cx('authentication-module')}>
-            <form onSubmit={this.props.formSubmit}>
-              <Grid container direction="column" justify="center" alignItems="center" className={cx('authentication-align')}>
-                {inputs}
-                <Button raised color="primary" type="submit">
-                  {this.props.formSubmitText}
-                  {this.props.formSubmitIcon}
-                </Button>
-              </Grid>
-            </form>
+            {this.determineRender()}
           </Grid>
         </Paper>
       </div>
@@ -60,5 +85,8 @@ AuthenticationForm.propTypes = {
   formSubmit: PropTypes.func.isRequired,
   formSubmitText: PropTypes.string.isRequired,
   formSubmitIcon: PropTypes.node,
+  isWaiting: PropTypes.bool.isRequired,
+  message: PropTypes.string.isRequired,
+  authenticated: PropTypes.bool.isRequired
 };
 export default AuthenticationForm;

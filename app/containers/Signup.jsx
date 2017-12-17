@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import Send from 'material-ui-icons/Send';
-import {signUp, signUpError} from '../actions/users';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import {signUp, signUpMismatch} from '../actions/users';
 import AuthenticationForm from '../components/AuthenticationForm';
 import AuthenticationLayout from '../components/AuthenticationLayout';
+
 /*
  * Note: This is kept as a container-level component,
  *  i.e. We should keep this as the container that does the data-fetching
@@ -29,12 +32,15 @@ class Signup extends Component {
     console.log(password);
     console.log(verifyPassword);
     if (verifyPassword === password) {
-      signUp({email, password});
+      console.log('Sign me up');
+      this.props.signUp({email, password});
     } else {
-      signUpError('Passwords do not match!');
+      console.log('in mismatch');
+      this.props.signUpMismatch('Passwords do not match!');
     }
   }
   render() {
+    const {isWaiting, message, authenticated} = this.props.user;
     const inputs = this.inputs;
     const formSubmitText = this.formSubmitText;
     return (
@@ -45,10 +51,28 @@ class Signup extends Component {
                   formSubmit={this.handleOnSubmit}
                   formSubmitText={formSubmitText}
                   formSubmitIcon={<Send />}
+                  isWaiting={isWaiting}
+                  message={message}
+                  authenticated={authenticated}
                 />
       </AuthenticationLayout>
   );
   }
 }
 
-export default Signup;
+Signup.propTypes = {
+  user: PropTypes.object,
+  signUp: PropTypes.func.isRequired,
+  signUpMismatch: PropTypes.func.isRequired
+};
+
+/*
+ * Redux connects to update our prop user whenever something regarding user is changed
+ */
+function mapStateToProps({user}) {
+  return {
+    user
+  };
+}
+
+export default connect(mapStateToProps, {signUp, signUpMismatch})(Signup);

@@ -71,6 +71,7 @@ export function manualLogin(data) {
 }
 
 export function signUp(data) {
+  console.log("Sign up action");
   return (dispatch) => {
     dispatch(beginSignUp());
 
@@ -82,6 +83,13 @@ export function signUp(data) {
       .catch((err) => {
         dispatch(signUpError('Oops! Something went wrong when signing up'));
       });
+  };
+}
+
+export function signUpMismatch(message) {
+  console.log('In mismatch action');
+  return (dispatch) => {
+    dispatch(signUpError(message));
   };
 }
 

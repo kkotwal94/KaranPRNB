@@ -21,7 +21,7 @@ class Login extends Component {
 
   handleOnSubmit(event) {
     event.preventDefault();
-    const email = this.userNameTextField.value
+    const email = this.userNameTextField.value;
     const password = this.passwordTextField.value;
     console.log(this.userNameTextField.value);
     console.log(this.passwordTextField.value);
@@ -39,7 +39,7 @@ class Login extends Component {
         <AuthenticationForm
                   title="Log in"
                   inputs={inputs}
-                  formSubmit={this.handleOnSubmit}
+                  formSubimt={this.handleOnSubmit}
                   formSubmitText={formSubmitText}
                   formSubmitIcon={<Send />}
                 />

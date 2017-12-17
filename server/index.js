@@ -2,9 +2,9 @@ import express from 'express';
 import webpack from 'webpack';
 import { isDebug } from '../config/app';
 import { connect } from './db';
-// import initPassport from './init/passport';
+import initPassport from './init/passport';
 import initExpress from './init/express';
-// import initRoutes from './init/routes';
+import initRoutes from './init/routes';
 import renderMiddleware from './render/middleware';
 
 const app = express();
@@ -14,12 +14,12 @@ const app = express();
  * - connect to MongoDB using mongoose
  * - register mongoose Schema
  */
-// connect();
+connect();
 
 /*
  * REMOVE if you do not need passport configuration
  */
-// initPassport();
+initPassport();
 
 if (isDebug) {
   // enable webpack hot module replacement
@@ -42,7 +42,7 @@ initExpress(app);
  *
  * Note: Some of these routes have passport and database model dependencies
  */
-// initRoutes(app);
+initRoutes(app);
 
 /*
  * This is where the magic happens. We take the locals data we have already
