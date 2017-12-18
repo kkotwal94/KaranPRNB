@@ -43,12 +43,18 @@ function beginLogout() {
   return { type: types.LOGOUT_USER};
 }
 
-function logoutSuccess() {
-  return { type: types.LOGOUT_SUCCESS_USER };
+function logoutSuccess(message) {
+  return {
+    type: types.LOGOUT_SUCCESS_USER,
+    message
+   };
 }
 
-function logoutError() {
-  return { type: types.LOGOUT_ERROR_USER };
+function logoutError(message) {
+  return {
+    type: types.LOGOUT_ERROR_USER,
+    message
+  };
 }
 
 export function toggleLoginMode() {
@@ -99,10 +105,10 @@ export function logOut() {
 
     return authService().logOut()
       .then((response) => {
-          dispatch(logoutSuccess());
+          dispatch(logoutSuccess('Logout Successful!'));
       })
       .catch((err) => {
-        dispatch(logoutError());
+        dispatch(logoutError('Logout Failed!'));
       });
   };
 }

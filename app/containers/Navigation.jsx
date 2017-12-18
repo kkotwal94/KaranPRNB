@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import classNames from 'classnames/bind';
+import { connect } from 'react-redux';
 import AppBar from 'material-ui/AppBar';
+import PropTypes from 'prop-types';
 import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';
 import IconButton from 'material-ui/IconButton';
 import MenuIcon from 'material-ui-icons/Menu';
 import styles from '../css/components/navigation.css';
+import { logOut } from '../actions/users';
 
 const cx = classNames.bind(styles);
 // import passTheAuxLogo from '../images/PassTheAux.png';
@@ -18,6 +21,27 @@ class Navigation extends Component {
     super(props);
     this.mobile = false;
   }
+
+  determineRender() {
+    const { authenticated } = this.props.user;
+    if (authenticated) {
+      return (
+        <Button color="contrast" onClick={this.props.logOut}>Logout</Button>
+      );
+    }
+      return (
+        <div>
+          <Link to="/login">
+            <Button color="contrast">Log In</Button>
+          </Link>
+          <span> | </span>
+          <Link to="/register">
+            <Button color="contrast">Sign up</Button>
+          </Link>
+        </div>
+      );
+    }
+
   render() {
     const mobile = this.mobile;
     const { classes } = this.props;
@@ -47,13 +71,7 @@ class Navigation extends Component {
                 <Button color="contrast">404 Not Found</Button>
               </Link>
             </div>
-            <Link to="/login">
-              <Button color="contrast">Log In</Button>
-            </Link>
-            |
-            <Link to="/register">
-              <Button color="contrast">Sign up</Button>
-            </Link>
+            {this.determineRender()}
           </Toolbar>
         </AppBar>
       </div>
@@ -61,5 +79,15 @@ class Navigation extends Component {
   }
 }
 
+Navigation.propTypes = {
+  user: PropTypes.object,
+  logOut: PropTypes.func.isRequired
+};
 
-export default (Navigation);
+function mapStateToProps({user}) {
+  return {
+    user
+  };
+}
+
+export default connect(mapStateToProps, { logOut })(Navigation);

@@ -9,7 +9,8 @@ const message = (
     case types.MANUAL_LOGIN_USER:
     case types.SIGNUP_USER:
       return '';
-    case types.LOGOUT_USER:
+    case types.LOGOUT_USER_SUCCESSFUL:
+    case types.LOGOUT_USER_ERROR:
     case types.LOGIN_SUCCESS_USER:
     case types.SIGNUP_SUCCESS_USER:
     case types.LOGIN_ERROR_USER:

@@ -1,0 +1,15 @@
+.message-container > div {
+  position: absolute;
+  top:70px;
+}
+.message-container.success > div {
+  background-color: #009933;
+}
+
+.message-container.warning > div {
+  background-color: lightOrange;
+}
+
+.message-container.error > div {
+  background-color: #FF003B;
+}

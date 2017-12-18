@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
 import Navigation from '../containers/Navigation';
+import Message from '../components/Message';
 import Footer from '../components/Footer';
 import styles from '../css/main.css';
 
@@ -46,6 +47,7 @@ class App extends Component {
           <div className={cx('content-wrapper')}>
             {this.props.children}
           </div>
+          <Message />
           <Footer />
         </div>
       </MuiThemeProvider>

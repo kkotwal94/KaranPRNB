@@ -8,15 +8,19 @@ import * as types from '../types';
 export default function message(state = {
   message: '',
   type: 'SUCCESS',
+  open: 'false'
 }, action = {}) {
   switch (action.type) {
     case types.LOGIN_SUCCESS_USER:
     case types.SIGNUP_SUCCESS_USER:
+    case types.LOGOUT_SUCCESS_USER:
+      return {...state, message: action.message, type: 'SUCCESS', open: true};
     case types.LOGIN_ERROR_USER:
     case types.SIGNUP_ERROR_USER:
-      return {...state, message: action.message, type: 'SUCCESS'};
+    case types.LOGOUT_ERROR_USER:
+      return {...state, message: action.message, type: 'ERROR', open: true};
     case types.DISMISS_MESSAGE:
-      return {...state, message: '', type: 'SUCCESS'};
+      return {...state, message: '', type: 'SUCCESS', open: false};
     default:
       return state;
     }

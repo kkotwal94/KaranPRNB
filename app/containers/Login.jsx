@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Send from 'material-ui-icons/Send';
-import {manualLogin, loginError} from '../actions/users';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import {manualLogin} from '../actions/users';
 import AuthenticationForm from '../components/AuthenticationForm';
 import AuthenticationLayout from '../components/AuthenticationLayout';
 /*
@@ -23,29 +25,40 @@ class Login extends Component {
     event.preventDefault();
     const email = this.userNameTextField.value;
     const password = this.passwordTextField.value;
-    console.log(this.userNameTextField.value);
-    console.log(this.passwordTextField.value);
-
-    console.log('Login submitting!');
-    manualLogin({email, password});
+    this.props.manualLogin({email, password});
   }
 
   render() {
     const inputs = this.inputs;
     const formSubmitText = this.formSubmitText;
+    const {isWaiting, message, authenticated} = this.props.user;
 
     return (
       <AuthenticationLayout>
         <AuthenticationForm
                   title="Log in"
                   inputs={inputs}
-                  formSubimt={this.handleOnSubmit}
+                  formSubmit={this.handleOnSubmit}
                   formSubmitText={formSubmitText}
                   formSubmitIcon={<Send />}
+                  isWaiting={isWaiting}
+                  message={message}
+                  authenticated={authenticated}
                 />
       </AuthenticationLayout>
   );
   }
 }
 
-export default Login;
+Login.propTypes = {
+  user: PropTypes.object,
+  manualLogin: PropTypes.func.isRequired,
+}
+
+function mapStateToProps({user}) {
+  return {
+    user
+  };
+}
+
+export default connect(mapStateToProps, {manualLogin})(Login);
