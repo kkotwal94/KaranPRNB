@@ -31,7 +31,6 @@ class App extends Component {
             {this.props.children}
           </div>
           <Message />
-          <Footer />
         </div>
       </MuiThemeProvider>
     );

@@ -9,6 +9,6 @@ const cx = classNames.bind(commonStyles);
  *  i.e. We should keep this as the container that does the data-fetching
  *  and dispatching of actions if you decide to have any sub-components.
  */
-const Dashboard = () => <div> <h1>Welcome to the Dasboard. Stay tuned...</h1></div>;
+const Dashboard = () => <div> <span>Welcome to the Dasboard. Stay tuned...</span></div>;
 
 export default Dashboard;

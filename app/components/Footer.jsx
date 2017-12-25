@@ -8,7 +8,7 @@ const cx = classNames.bind(styles);
 class Footer extends Component {
 
   determineShow = () => {
-    let path = window.location.pathname;
+    let path = '';
     path = path.split('/')[1];
     switch (path) {
       case '':

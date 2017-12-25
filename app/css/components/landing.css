@@ -1,7 +1,7 @@
 .landing {
     height: 100%;
-    background-color: #ff5722;
     margin: 0;
+    background: inline("images/Ma-Vibes.jpg");
 }
 
 .hidden {

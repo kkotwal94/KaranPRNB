@@ -17,6 +17,10 @@
   background-color: #3F51B5 !important;
 }
 
+.nav-transparent {
+  background-color: transparent !important;
+}
+
 .navigation-title {
   color: white;
 }
@@ -33,6 +37,7 @@
   height: 10%;
   position:relative !important;
   z-index: 100;
+  color: rgba(0, 0, 32, 0.6)
 }
 .menu-button {
   margin-left: -12;

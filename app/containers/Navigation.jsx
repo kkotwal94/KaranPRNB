@@ -19,49 +19,8 @@ class Navigation extends Component {
   constructor(props) {
     super(props);
     this.mobile = false;
-    this.state = {
-      navigationStyle: this.determineNavigationStyle(),
-    };
   }
 
-  setNavigationStyle = (path) => {
-    console.log(path);
-    switch (path) {
-      case '':
-        this.setState({navigationStyle: 'navigation-landing'});
-        break;
-      case 'about':
-        this.setState({navigationStyle: 'navigation-about'});
-        break;
-      case 'dashboard':
-        this.setState({navigationStyle: 'navigation-dashboard'});
-        break;
-      case 'login':
-      case 'register':
-        this.setState({navigationStyle: 'navigation-auth'});
-        break;
-      default:
-        this.setState({navigationStyle: 'navigation-landing'});
-      }
-    }
-
-    determineNavigationStyle = () => {
-      let path = window.location.pathname;
-      path = path.split('/')[1];
-      switch (path) {
-        case '':
-          return 'navigation-landing';
-        case 'about':
-          return 'navigation-about';
-        case 'login':
-        case 'register':
-          return 'navigation-auth';
-        case 'dashboard':
-          return 'navigation-dashboard';
-        default:
-          return 'navigation-landing';
-        }
-      }
   determineAuthRender() {
     const { authenticated } = this.props.user;
     if (authenticated) {
@@ -71,11 +30,11 @@ class Navigation extends Component {
     }
       return (
         <div>
-          <Link to="/login" onClick={() => this.setNavigationStyle('login')}>
+          <Link to="/login">
             <Button color="contrast">Log In</Button>
           </Link>
           <span> | </span>
-          <Link to="/register" onClick={() => this.setNavigationStyle('register')}>
+          <Link to="/register">
             <Button color="contrast">Sign up</Button>
           </Link>
         </div>
@@ -87,10 +46,10 @@ class Navigation extends Component {
      if (authenticated) {
        return (
          <div>
-           <Link to="/dashboard" onClick={() => this.setNavigationStyle('dashboard')}>
+           <Link to="/dashboard">
              <Button color="contrast">Dashboard</Button>
            </Link>
-           <Link to="/about" onClick={() => this.setNavigationStyle('about')}>
+           <Link to="/about">
              <Button color="contrast">About</Button>
            </Link>
          </div>
@@ -98,7 +57,7 @@ class Navigation extends Component {
      }
      return (
        <div>
-         <Link to="/about" onClick={() => this.setNavigationStyle('about')}>
+         <Link to="/about">
            <Button color="contrast">About</Button>
          </Link>
        </div>
@@ -108,12 +67,11 @@ class Navigation extends Component {
   render() {
     const mobile = this.mobile;
     const { classes } = this.props;
-    const navigationColor = this.state.navigationStyle;
     return (
       <div className={cx('appbar')}>
         <AppBar position="static" color="primary" className={cx('navigation')}
           classes={{
-            root: cx(navigationColor)
+            root: cx('navigation-landing')
           }}>
           <Toolbar>
             {mobile && (
@@ -121,7 +79,7 @@ class Navigation extends Component {
               <MenuIcon />
             </IconButton>)}
             <Typography type="title" color="inherit" className={cx('flex')}>
-              <Link to="/" onClick={() => this.setNavigationStyle('')} className={cx('navigation-title')}>
+              <Link to="/" className={cx('navigation-title')}>
                 PassTheAux
               </Link>
             </Typography>
@@ -138,7 +96,7 @@ class Navigation extends Component {
 
 Navigation.propTypes = {
   user: PropTypes.object,
-  logOut: PropTypes.func.isRequired
+  logOut: PropTypes.func.isRequired,
 };
 
 function mapStateToProps({user}) {
