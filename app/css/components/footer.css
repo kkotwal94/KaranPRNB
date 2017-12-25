@@ -8,3 +8,7 @@
 .footer-text {
   margin: 0;
 }
+
+.footer-hide {
+  display:none;
+}

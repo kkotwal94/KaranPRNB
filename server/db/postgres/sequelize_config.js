@@ -18,9 +18,10 @@ module.exports = {
   production: {
     use_env_variable: 'POSTGRES_DB_URL',
     username: process.env.PGUSER || 'postgres',
-    password: 'localhost',
+    password: 'ShadowX113',
     database: 'PassTheAux',
-    host: '127.0.0.1',
+    host: 'localhost',
+    port: '5432',
     dialect: 'postgres'
   }
 };

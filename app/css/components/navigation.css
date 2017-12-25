@@ -9,6 +9,26 @@
 
 }
 
+.navigation-landing {
+  background-color: black !important;
+}
+
+.navigation-about {
+  background-color: #3F51B5 !important;
+}
+
+.navigation-title {
+  color: white;
+}
+
+.navigation-auth {
+
+}
+
+.navigation-dashboard {
+  background-color: red !important;
+}
+
 .navigation {
   height: 10%;
   position:relative !important;
