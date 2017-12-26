@@ -25,3 +25,32 @@
   height: 100%;
   z-index: 0;
 }
+
+.header {
+  position: absolute;
+  top: 25%;
+  width: 100%;
+  text-align: center;
+  z-index: 1000;
+}
+
+.text-description {
+  font-weight: 100;
+  color: #fff;
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 25px;
+}
+
+.logo {
+  vertical-align: middle;
+  text-align:center;
+}
+
+.header-buttons {
+  text-align: center;
+}
+
+.header-button {
+  margin-right: 15px;
+}

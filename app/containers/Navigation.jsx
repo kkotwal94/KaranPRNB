@@ -49,6 +49,9 @@ class Navigation extends Component {
            <Link to="/dashboard">
              <Button color="contrast">Dashboard</Button>
            </Link>
+           <Link to="/lobbys">
+             <Button color="contrast">Lobbys</Button>
+           </Link>
            <Link to="/about">
              <Button color="contrast">About</Button>
            </Link>
@@ -57,6 +60,9 @@ class Navigation extends Component {
      }
      return (
        <div>
+         <Link to="/lobbys">
+           <Button color="contrast">Lobbys</Button>
+         </Link>
          <Link to="/about">
            <Button color="contrast">About</Button>
          </Link>

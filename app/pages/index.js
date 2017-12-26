@@ -5,3 +5,6 @@ export { default as Landing } from 'pages/Landing';
 export { default as NotFound } from 'pages/NotFound';
 export { default as Login } from 'pages/Login';
 export { default as Signup } from 'pages/Signup';
+export { default as Lobbys } from 'pages/Lobbys';
+export { default as Profile } from 'pages/Profile';
+export { default as ToS } from 'pages/ToS';
