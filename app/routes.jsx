@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
-import { App, Dashboard, About, NotFound, Landing, Login, Signup, Lobbys, Profile, ToS } from './pages';
+import { App, Dashboard, About, NotFound, Inbox, Landing, Login, Signup, Settings, Lobbys, Profile, ToS } from './pages';
 
 /*
  * @param {Redux Store}
@@ -37,6 +37,8 @@ export default (store) => {
       <Route path="about" component={About} />
       <Route path="login" component={Login} />
       <Route path="register" component={Signup} />
+      <Route path="profile/inbox" component={Inbox} onEnter={requireAuth} />
+      <Route path="profile/settings" component={Settings} onEnter={requireAuth} />
       <Route path="lobbys" component={Lobbys} />
       <Route path="terms" component={ToS} />
       <Route path="profile" component={Profile} onEnter={requireAuth} />

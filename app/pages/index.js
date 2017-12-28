@@ -8,3 +8,5 @@ export { default as Signup } from 'pages/Signup';
 export { default as Lobbys } from 'pages/Lobbys';
 export { default as Profile } from 'pages/Profile';
 export { default as ToS } from 'pages/ToS';
+export { default as Inbox } from 'pages/Inbox';
+export { default as Settings } from 'pages/Settings';

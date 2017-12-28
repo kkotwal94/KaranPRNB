@@ -4,8 +4,6 @@ import classNames from 'classnames/bind';
 import { connect } from 'react-redux';
 import Snackbar from 'material-ui/Snackbar';
 import Button from 'material-ui/Button';
-import IconButton from 'material-ui/IconButton';
-import CloseIcon from 'material-ui-icons/Close';
 import styles from '../css/components/messages.css';
 import { dismissMessage } from '../actions/message';
 
@@ -13,9 +11,20 @@ const cx = classNames.bind(styles);
 
 class Message extends Component {
 
-  handleClose = (event, reason) => {
+  handleClose = () => {
     this.props.dismissMessage();
   };
+
+  determineRender() {
+    const {message} = this.props.message;
+    if (message !== undefined && message.length > 0) {
+      return (
+        <div>
+          {this.renderSnackbar()}
+        </div>
+      );
+    }
+  }
 
   renderSnackbar() {
     return (
@@ -34,24 +43,15 @@ class Message extends Component {
           open={this.props.message.open}
           message={this.props.message.message}
           action={[
-           <Button key="undo" color="primary" dense onClick={this.handleClose}>
-             Close
-           </Button>,
+            <Button key="undo" color="primary" dense onClick={this.handleClose}>
+              Close
+            </Button>,
          ]}
          />
       </div>
     );
   }
-  determineRender() {
-    const {message} = this.props.message;
-    if (message !== undefined && message.length > 0) {
-      return (
-        <div>
-          {this.renderSnackbar()}
-        </div>
-      );
-    }
-  }
+
   render() {
     return (
       <div>

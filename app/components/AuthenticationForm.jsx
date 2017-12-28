@@ -31,9 +31,6 @@ class AuthenticationForm extends Component {
         </Grid>
         )
     );
-    console.log(this.props.inputs);
-    console.log(isWaiting);
-    console.log(authenticated);
     if (isWaiting) {
       return (
         <div>
