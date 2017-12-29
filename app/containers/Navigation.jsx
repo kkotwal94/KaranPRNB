@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
+import ReactDOM from 'react-dom';
 import {Link} from 'react-router';
 import classNames from 'classnames/bind';
 import {connect} from 'react-redux';
-import {Manager, Target, Popper} from 'react-popper';
 import ClickAwayListener from 'material-ui/utils/ClickAwayListener';
 import AppBar from 'material-ui/AppBar';
 import PropTypes from 'prop-types';
@@ -13,8 +13,8 @@ import Button from 'material-ui/Button';
 import Paper from 'material-ui/Paper';
 import IconButton from 'material-ui/IconButton';
 import {ListItemIcon, ListItemText} from 'material-ui/List';
+import Popover from 'material-ui/Popover';
 import {MenuList, MenuItem} from 'material-ui/Menu';
-import Grow from 'material-ui/transitions/Grow';
 import MenuIcon from 'material-ui-icons/Menu';
 import InboxIcon from 'material-ui-icons/MoveToInbox';
 import SettingsIcon from 'material-ui-icons/Settings';
@@ -25,15 +25,21 @@ import styles from '../css/components/navigation.css';
 import {logOut} from '../actions/users';
 
 const cx = classNames.bind(styles);
-// import passTheAuxLogo from '../images/PassTheAux.png';
-
 class Navigation extends Component {
   constructor(props) {
     super(props);
     this.mobile = false;
     this.state = {
-      menuOpen: false
-    }
+      menuOpen: false,
+      anchorEl: null,
+      anchorOriginVertical: 'bottom',
+      anchorOriginHorizontal: 'center',
+      transformOriginVertical: 'top',
+      transformOriginHorizontal: 'center',
+      positionTop: 200, // Just so the popover can be spotted more easily
+      positionLeft: 400, // Same as above
+      anchorReference: 'anchorEl'
+    };
   }
 
   closeAndlogout = () => {
@@ -42,7 +48,10 @@ class Navigation extends Component {
   }
 
   handleOpen = () => {
-    this.setState({menuOpen: true});
+    this.setState({
+      menuOpen: true,
+      anchorEl: ReactDOM.findDOMNode(this.profileAvatar)
+    });
   }
 
   handleClose = () => {
@@ -53,45 +62,56 @@ class Navigation extends Component {
     const {authenticated} = this.props.user;
     if (authenticated) {
       return (
-      //<Button color="contrast" onClick={this.props.logOut}>Logout</Button>
-      <div>
-        <Manager>
-          <Target>
-            <Avatar
-              aria-owns={this.state.menuOpen
-                ? 'menu-list'
-                : null} aria-haspopup="true" onClick={this.handleOpen}>
-              <AccountCircleIcon />
-            </Avatar>
-          </Target>
-        <Popper
-          placement="bottom-start"
-          eventsEnabled={this.state.menuOpen}>
-          <ClickAwayListener onClickAway={this.handleClose}>
-            <Grow
-              in={this.state.menuOpen} id="menu-list" style={{
-                transformOrigin: '0 0 0'
-              }}>
+        <div>
+          <Avatar
+            aria-owns={this.state.menuOpen
+              ? 'menu-list'
+              : null} onClick={this.handleOpen} ref={node => {
+              this.profileAvatar = node;
+            }}>
+            <AccountCircleIcon />
+          </Avatar>
+          <Popover
+              open={this.state.menuOpen}
+              anchorEl={this.state.anchorEl}
+              anchorReference={this.state.anchorReference}
+              anchorPosition={{
+              top: this.state.positionTop,
+              left: this.statepositionLeft
+            }} onClose={this.handleClose} anchorOrigin={{
+              vertical: this.state.anchorOriginVertical,
+              horizontal: this.state.anchorOriginHorizontal
+            }} transformOrigin={{
+              vertical: this.state.transformOriginVertical,
+              horizontal: this.state.transformOriginHorizontal
+            }}>
+            <ClickAwayListener onClickAway={this.handleClose}>
               <Paper>
-                <MenuList >
-                  <MenuItem>
-                    <ListItemIcon>
-                      <PersonIcon />
-                    </ListItemIcon>
-                    <ListItemText inset="inset" primary="Profile" />
-                  </MenuItem>
-                  <MenuItem>
-                    <ListItemIcon>
-                      <InboxIcon />
-                    </ListItemIcon>
-                    <ListItemText inset="inset" primary="Inbox" />
-                  </MenuItem>
-                  <MenuItem>
-                    <ListItemIcon>
-                      <SettingsIcon />
-                    </ListItemIcon>
-                    <ListItemText inset="inset" primary="Settings" />
-                  </MenuItem>
+                <MenuList>
+                  <Link to="/profile">
+                    <MenuItem onClick={this.handleClose}>
+                      <ListItemIcon>
+                        <PersonIcon />
+                      </ListItemIcon>
+                      <ListItemText inset="inset" primary="Profile" />
+                    </MenuItem>
+                  </Link>
+                  <Link to="/profile/inbox">
+                    <MenuItem onClick={this.handleClose}>
+                      <ListItemIcon>
+                        <InboxIcon />
+                      </ListItemIcon>
+                      <ListItemText inset="inset" primary="Inbox" />
+                    </MenuItem>
+                  </Link>
+                  <Link to="/profile/settings">
+                    <MenuItem onClick={this.handleClose}>
+                      <ListItemIcon>
+                        <SettingsIcon />
+                      </ListItemIcon>
+                      <ListItemText inset="inset" primary="Settings" />
+                    </MenuItem>
+                  </Link>
                   <MenuItem onClick={this.closeAndlogout}>
                     <ListItemIcon>
                       <ExitIcon />
@@ -100,11 +120,9 @@ class Navigation extends Component {
                   </MenuItem>
                 </MenuList>
               </Paper>
-            </Grow>
-          </ClickAwayListener>
-        </Popper>
-      </Manager>
-      </div>);
+            </ClickAwayListener>
+          </Popover>
+        </div>);
     }
     return (<div>
       <Link to="/login">
@@ -147,13 +165,14 @@ class Navigation extends Component {
   render() {
     const mobile = this.mobile;
     return (<div className={cx('appbar')}>
-      <AppBar position="static" color="primary" className={cx('navigation')} classes={{
+      <AppBar
+        position="static" color="primary" className={cx('navigation')} classes={{
           root: cx('navigation-landing')
         }}>
         <Toolbar>
           {
             mobile && (<IconButton className={cx('menu-button')} color="contrast" aria-label="Menu">
-              <MenuIcon/>
+              <MenuIcon />
             </IconButton>)
           }
           <Typography type="title" color="inherit" className={cx('flex')}>
