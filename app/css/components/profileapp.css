@@ -1,0 +1,11 @@
+.maxHeight {
+  height: 100%;
+}
+
+.sidebar {
+  height: 100%;
+}
+
+.sidebar > div {
+  height: 100%;
+}

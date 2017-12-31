@@ -1,0 +1,10 @@
+.sidebar {
+  position: relative !important;
+  width: 100%;
+  height: 100% !important;
+  overflowX: hidden;
+}
+
+.maxHeight {
+  height: 100%;
+}

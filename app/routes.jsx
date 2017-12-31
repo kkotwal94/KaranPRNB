@@ -1,6 +1,10 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
-import { App, Dashboard, About, NotFound, Inbox, Landing, Login, Signup, Settings, Lobbys, Profile, ToS } from './pages';
+import { App, Dashboard, About, NotFound, Inbox,
+         Landing, Login, Signup, Settings, Lobbys, Profile,
+         ToS, UserLobbies, UserStatistics, ProfileApp, Themes,
+         Friends }
+         from './pages';
 
 /*
  * @param {Redux Store}
@@ -37,11 +41,17 @@ export default (store) => {
       <Route path="about" component={About} />
       <Route path="login" component={Login} />
       <Route path="register" component={Signup} />
-      <Route path="profile/inbox" component={Inbox} onEnter={requireAuth} />
-      <Route path="profile/settings" component={Settings} onEnter={requireAuth} />
       <Route path="lobbys" component={Lobbys} />
       <Route path="terms" component={ToS} />
-      <Route path="profile" component={Profile} onEnter={requireAuth} />
+      <Route path="profile" component={ProfileApp} onEnter={requireAuth}>
+        <IndexRoute component={Profile} />
+        <Route path="lobby" component={UserLobbies} onEnter={requireAuth} />
+        <Route path="statistics" component={UserStatistics} onEnter={requireAuth} />
+        <Route path="inbox" component={Inbox} onEnter={requireAuth} />
+        <Route path="settings" component={Settings} onEnter={requireAuth} />
+        <Route path="friends" component={Friends} onEnter={requireAuth} />
+        <Route path="theme" component={Themes} onEnter={requireAuth} />
+      </Route>
       <Route path="*" component={NotFound} />
     </Route>
   );
