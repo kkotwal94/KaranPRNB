@@ -9,6 +9,7 @@ import Navigation from '../app/Navigation';
 import Message from '../../components/Message';
 import Footer from '../../components/Footer';
 import styles from '../../css/main.css';
+import Reboot from 'material-ui/Reboot';
 
 
 const cx = classNames.bind(styles);
@@ -26,6 +27,7 @@ class App extends Component {
     return (
       <MuiThemeProvider theme={theme}>
         <div className={cx('app')}>
+          <Reboot />
           <Navigation />
           <div className={cx('content-wrapper')}>
             {this.props.children}

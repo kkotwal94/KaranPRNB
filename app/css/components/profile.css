@@ -1,0 +1,23 @@
+.profile {
+ position: relative;
+ top: 30px;
+ height: calc(95% - 30px);
+}
+
+.profile-full {
+  height: 100%;
+}
+
+.profile-container {
+  height: 100%;
+  background-color: #eeeeee;
+}
+
+.profile-ava {
+  height: 100px !important;
+  width: 100px !important;
+}
+
+.profile-edit-icon {
+  float:right;
+}

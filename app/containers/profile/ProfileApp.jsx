@@ -20,7 +20,7 @@ class ProfileApp extends Component {
                 externalElements={externalsList}
               />
             </Grid>
-            <Grid item xs={9} md={10} xl={10}>
+            <Grid item xs={9} md={10} xl={10} className={cx('profile-container')}>
               {this.props.children}
             </Grid>
           </Grid>

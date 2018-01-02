@@ -33,7 +33,6 @@ class ProfileMenu extends Component {
 
   closeAndlogout = () => {
     this.handleClose();
-    console.log(this.props.onLogout);
     this.props.logOut();
   }
 
@@ -118,8 +117,6 @@ class ProfileMenu extends Component {
 }
 
 ProfileMenu.propTypes = {
-  onLogout: PropTypes.func.isRequired,
-  user: PropTypes.object,
   logOut: PropTypes.func.isRequired,
 };
 

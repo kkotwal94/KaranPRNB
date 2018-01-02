@@ -1,0 +1,16 @@
+.toolbar-root {
+  padding-right: 2;
+}
+
+.toolbar-highlight {
+  background-color: #ff80ab;
+  color: #c51162;
+}
+
+.toolbar-spacer {
+  flex: 1 1 100%;
+}
+
+.toolbar-title {
+  flex: 0 0 auto;
+}
