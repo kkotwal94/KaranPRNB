@@ -4,8 +4,10 @@
   import {Link} from 'react-router';
   import Divider from 'material-ui/Divider';
   import Drawer from 'material-ui/Drawer';
+  import TextField from 'material-ui/TextField';
   import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
   import commonStyles from '../css/components/sidebar.css';
+
 
 
   const cx = classNames.bind(commonStyles);
@@ -31,7 +33,7 @@
         this.props.sideBarElements.map((item, i) =>
           <Link to={item.url} key={'profile-nav-' + i}>
             <ListItem button>
-              <ListItemIcon>
+              <ListItemIcon className={cx('sidebar-color')}>
                 <item.icon />
               </ListItemIcon>
               <ListItemText inset="inset" primary={item.name} />
@@ -49,7 +51,7 @@
         this.props.externalElements.map((item, i) =>
         <Link to={item.url} key={'profile-nav-sub' + i}>
         <ListItem button>
-        <ListItemIcon>
+        <ListItemIcon className={cx('sidebar-color')}>
           <item.icon />
         </ListItemIcon>
           <ListItemText inset="inset" primary={item.name} />
@@ -71,7 +73,7 @@
         >
           <List>
             {this.determineListRender()}
-            <Divider />
+            <Divider className={cx('sidebar-divider')} />
             {this.determineExternalsRender()}
           </List>
         </Drawer>

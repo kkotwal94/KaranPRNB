@@ -49,7 +49,7 @@ class AuthenticationForm extends Component {
         <form onSubmit={this.props.formSubmit}>
           <Grid container direction="column" justify="center" alignItems="center" className={cx('authentication-align')}>
             {inputs}
-            <Button raised color="primary" type="submit">
+            <Button raised color="accent" type="submit">
               {this.props.formSubmitText}
               {this.props.formSubmitIcon}
             </Button>
@@ -61,7 +61,7 @@ class AuthenticationForm extends Component {
   render() {
     return (
       <div>
-        <AppBar position="static" color="primary" className={cx('authentication-title')}>
+        <AppBar position="static" color="accent" className={cx('authentication-title')}>
           <div className={cx('authentication-title-text')}>
             {this.props.title}
           </div>

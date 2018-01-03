@@ -4,19 +4,15 @@
   import Grid from 'material-ui/Grid';
   import PropTypes from 'prop-types';
   import Avatar from 'material-ui/Avatar';
-  import Checkbox from 'material-ui/Checkbox';
   import IconButton from 'material-ui/IconButton';
   import EditIcon from 'material-ui-icons/Edit';
-  import Tooltip from 'material-ui/Tooltip';
-  import Toolbar from 'material-ui/Toolbar';
-  import DeleteIcon from 'material-ui-icons/Delete';
-  import FilterListIcon from 'material-ui-icons/FilterList';
+  import SaveIcon from 'material-ui-icons/Save';
   import commonStyles from '../../css/components/profile.css';
-  import Sidebar from '../../components/Sidebar';
-  import profileList from '../../utils/profileList';
-  import externalsList from '../../utils/externalsList';
   import EnhancedTable from '../../components/EnhancedTable';
-
+  import Input, { InputLabel, InputAdornment } from 'material-ui/Input';
+  import { MenuItem } from 'material-ui/Menu';
+  import { FormControl, FormHelperText } from 'material-ui/Form';
+  import Select from 'material-ui/Select';
 
   const cx = classNames.bind(commonStyles);
 
@@ -24,8 +20,41 @@
   class Profile extends Component {
     constructor(props) {
       super(props);
+      this.state = {
+        name: '',
+        gender: '',
+        location: '',
+        website: '',
+        edit: true,
+      };
     }
+
+    handleChange = prop => (event) => {
+      this.setState({ [prop]: event.target.value });
+    };
+
+    handleEditMode = () => {
+      if (this.state.edit) {
+        this.setState({edit: false});
+      } else {
+        this.setState({edit: true});
+      }
+    }
+
+    renderIcon() {
+      if (this.state.edit) {
+      return (
+        <SaveIcon />
+      );
+    }
+    return (
+      <EditIcon />
+    );
+    }
+
+
     render() {
+      const {name, gender, location, website} = this.state;
       return (
         <div className={cx('profile')}>
           <Grid item xs={12} md={12} className={cx('profile-full')}>
@@ -50,30 +79,65 @@
                       <h1>Karan Kotwal</h1>
                     </Grid>
                     <Grid item xs={1}>
-                      <IconButton className={cx('profile-edit-icon')} aria-label="Edit">
-                        <EditIcon />
+                      <IconButton onClick={this.handleEditMode} className={cx('profile-edit-icon')} aria-label="Edit">
+                        {this.renderIcon()}
                       </IconButton>
                     </Grid>
                   </Grid>
                   <Grid container
-                    spacing={0}>
-                    <Grid item xs={12} sm={6} md={3}>
-                      <p>kkotwal@udel.edu</p>
+                    >
+                    <Grid item xs={12} sm={12} md={12}>
+                      <FormControl fullWidth>
+                        <InputLabel htmlFor="name">Name</InputLabel>
+                        <Input
+                          id="name"
+                          value={name}
+                          onChange={this.handleChange('name')}
+                          ref={el => this.profileName = el} />
+                      </FormControl>
                     </Grid>
-                    <Grid item xs={12} sm={6} md={3}>
-                      <p>Gender</p>
+                    <Grid item xs={12} sm={12} md={12}>
+                      <FormControl fullWidth>
+                        <InputLabel htmlFor="gender">Gender</InputLabel>
+                        <Select
+                          id="gender"
+                          value={gender}
+                          onChange={this.handleChange('gender')}
+                          ref={el => this.profileGender = el}>
+                          <MenuItem value="">
+                            <em>None</em>
+                          </MenuItem>
+                          <MenuItem value={'Male'}>Male</MenuItem>
+                          <MenuItem value={'Female'}>Female</MenuItem>
+                          <MenuItem value={'NotSure'}>Not Sure</MenuItem>
+                        </Select>
+                      </FormControl>
                     </Grid>
-                    <Grid item xs={12} sm={6} md={3}>
-                      <p>location</p>
+                    <Grid item xs={12} sm={12} md={12}>
+                      <FormControl fullWidth>
+                        <InputLabel htmlFor="location">Location</InputLabel>
+                        <Input
+                          id="location"
+                          value={location}
+                          onChange={this.handleChange('location')}
+                          ref={el => this.profileLocation = el} />
+                      </FormControl>
                     </Grid>
-                    <Grid item xs={12} sm={6} md={3}>
-                      <p>Picture</p>
+                    <Grid item xs={12} sm={12} md={12}>
+                      <FormControl fullWidth>
+                        <InputLabel htmlFor="website">Website</InputLabel>
+                        <Input
+                          id="website"
+                          value={website}
+                          onChange={this.handleChange('website')}
+                          ref={el => this.profileWebsite = el} />
+                      </FormControl>
                     </Grid>
                   </Grid>
                   <Grid container
                     spacing={0}>
                     <Grid item xs={12}>
-                      <EnhancedTable />
+                      <p> Hello </p>
                     </Grid>
                   </Grid>
                 </Grid>

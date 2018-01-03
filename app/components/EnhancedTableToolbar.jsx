@@ -7,24 +7,22 @@ import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
 import Tooltip from 'material-ui/Tooltip';
 import IconButton from 'material-ui/IconButton';
-import styles from '../css/components/enhancedtoolbar.css';
+import commonStyles from '../css/components/enhancedtable.css';
 
-const cx = classNames.bind(styles);
+const cx = classNames.bind(commonStyles);
 
-const EnhancedTableToolbar = (props) => {
-  const { numSelected } = props;
+class EnhancedTableToolbar extends React.Component {
 
+render() {
+  const { numSelected, title } = this.props;
   return (
     <Toolbar
-      className={classNames(cx('toolbar-root'), {
-        [cx('toolbar-highlight')]: numSelected > 0,
-      })}
-    >
+      className={cx('table-root')}>
       <div className={cx('toolbar-title')}>
         {numSelected > 0 ? (
           <Typography type="subheading">{numSelected} selected</Typography>
         ) : (
-          <Typography type="title">Comments</Typography>
+          <Typography type="title">{title}</Typography>
         )}
       </div>
       <div className={cx('toolbar-spacer')} />
@@ -45,10 +43,12 @@ const EnhancedTableToolbar = (props) => {
       </div>
     </Toolbar>
   );
-};
+}
+}
 
 EnhancedTableToolbar.propTypes = {
   numSelected: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
 };
 
 export default EnhancedTableToolbar;
