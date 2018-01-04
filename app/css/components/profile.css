@@ -16,8 +16,54 @@
 .profile-ava {
   height: 100px !important;
   width: 100px !important;
+  position: relative;
+  left: calc(50% - 8.3%);
 }
 
 .profile-edit-icon {
   float:right;
+}
+
+.profile-text-fields {
+  padding-left: 5% !important;
+  width: 90%;
+}
+
+.profile-label {
+  padding-left: 5.5% !important;
+}
+
+.profile-header {
+  background-color: #ff5252;
+}
+
+.profile-achievements {
+  position: relative;
+  top: 10px;
+}
+
+.profile-achievements-views {
+  background-color: #827AA7 !important;
+  color: white;
+}
+
+.profile-achievements-karma {
+  background-color: green !important;
+  color: white;
+}
+
+.profile-achievements-followers {
+  background-color: #E04C85 !important;
+  color:white;
+}
+
+.profile-headset-container {
+  text-align: center;
+}
+
+.profile-headset {
+  position:relative !important;
+  top: 20px !important;
+  height: 50% !important;
+  width: 50% !important;
 }
