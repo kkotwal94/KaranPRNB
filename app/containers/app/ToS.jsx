@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames/bind';
-import commonStyles from '../../css/components/tos.css';
+import commonStyles from '../../css/components/ToS.css';
 
 const cx = classNames.bind(commonStyles);
 

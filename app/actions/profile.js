@@ -46,7 +46,7 @@ export function fetchProfileData() {
 export function updateProfileData(data, id) {
     return (dispatch) => {
       dispatch(updateUserData());
-      return userService().updateUser({data, id})
+      return userService().updateUser(data, id)
         .then(() => {
           dispatch(updateUserDataSuccess(data));
         })

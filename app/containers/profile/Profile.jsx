@@ -7,16 +7,17 @@
   import IconButton from 'material-ui/IconButton';
   import EditIcon from 'material-ui-icons/Edit';
   import SaveIcon from 'material-ui-icons/Save';
-  import commonStyles from '../../css/components/profile.css';
-  import Input, { InputLabel, InputAdornment } from 'material-ui/Input';
-  import Card, { CardActions, CardContent } from 'material-ui/Card';
+  import Input, { InputLabel } from 'material-ui/Input';
+  import Card, { CardContent } from 'material-ui/Card';
   import { MenuItem } from 'material-ui/Menu';
-  import { FormControl, FormHelperText } from 'material-ui/Form';
+  import { FormControl } from 'material-ui/Form';
   import Select from 'material-ui/Select';
-  import TextField from 'material-ui/TextField';
   import Typography from 'material-ui/Typography';
   import HeadsetIcon from 'material-ui-icons/Headset';
   import FileUploadIcon from 'material-ui-icons/FileUpload';
+  import { updateProfileData } from '../../actions/profile';
+  import commonStyles from '../../css/components/profile.css';
+
   const cx = classNames.bind(commonStyles);
 
   /* Note: This is kept as a container-level component,  i.e. We should keep this as the container that does the data-fetching  and dispatching of actions if you decide to have any sub-components. */
@@ -24,10 +25,10 @@
     constructor(props) {
       super(props);
       this.state = {
-        name: 'Karan',
-        gender: 'Male',
-        location: 'New Castle, DE',
-        website: 'kkotwal.me',
+        name: this.props.user.profile.profile.name,
+        gender: this.props.user.profile.profile.gender,
+        location: this.props.user.profile.profile.location,
+        website: this.props.user.profile.profile.website,
         edit: false,
         description: 'Just a boy doin sum dum shit',
       };
@@ -45,10 +46,20 @@
       }
     }
 
+    saveProfile = () => {
+      const data = {
+        name: this.state.name,
+        gender: this.state.gender,
+        location: this.state.location,
+        website: this.state.website,
+      };
+      this.props.updateProfileData(data, this.props.user.profile.id);
+    };
+
     renderIcon() {
       if (this.state.edit) {
       return (
-        <SaveIcon />
+        <SaveIcon onClick={this.saveProfile} />
       );
     }
     return (
@@ -86,7 +97,7 @@
                   </Grid>
                   <Grid container
                     justify={"center"}
-                    spacing={'40'}
+                    spacing={40}
                     className={cx('profile-achievements')}>
                     <Grid item xs={3}>
                       <Card className={cx('profile-achievements-views')}>
@@ -189,7 +200,11 @@
         }
       }
 
+      Profile.propTypes = {
+        updateProfileData: PropTypes.func.isRequired,
+      };
+
       function mapStateToProps({user}) {
         return {user};
       }
-      export default connect(mapStateToProps)(Profile);
+      export default connect(mapStateToProps, {updateProfileData})(Profile);

@@ -15,7 +15,7 @@ export default () => {
     }),
     updateUser: (data, id) => client.request({
       method: 'PATCH',
-      url: `/user/${id}`,
+      url: `/users/${id}`,
       data,
     })
   };

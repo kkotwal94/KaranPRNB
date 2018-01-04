@@ -9,6 +9,7 @@ export default (app) => {
    */
   if (usersController) {
     app.post('/users', usersController.signUp);
+    app.patch('/users/:id', usersController.updateProfile);
     app.post('/sessions', usersController.login);
     app.delete('/sessions', usersController.logout);
   }

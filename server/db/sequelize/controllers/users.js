@@ -56,8 +56,20 @@ export function signUp(req, res, next) {
   );
 }
 
+export function updateProfile(req, res, next) {
+  User.findOne({ where: {id: req.params.id }}).then((existingUser) => {
+    existingUser.update(req.body).then((user, err) => {
+      if (err) return res.sendStatus(500);
+      return res.sendStatus(200);
+    });
+  }).catch(err =>
+    next(err)
+  );
+}
+
 export default {
   login,
   logout,
-  signUp
+  signUp,
+  updateProfile,
 };
