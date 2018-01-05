@@ -25,12 +25,12 @@
     constructor(props) {
       super(props);
       this.state = {
-        name: this.props.user.profile.profile.name,
-        gender: this.props.user.profile.profile.gender,
-        location: this.props.user.profile.profile.location,
-        website: this.props.user.profile.profile.website,
+        name: this.props.user.profile.profile !== undefined ? this.props.user.profile.profile.name : '',
+        gender: this.props.user.profile.profile !== undefined ? this.props.user.profile.profile.gender : '',
+        location: this.props.user.profile.profile !== undefined ? this.props.user.profile.profile.location : '',
+        website: this.props.user.profile.profile !== undefined ? this.props.user.profile.profile.website : '',
         edit: false,
-        description: 'Just a boy doin sum dum shit',
+        description: this.props.user.profile.profile !== undefined ? this.props.user.profile.profile.description : '',
       };
     }
 
@@ -52,6 +52,7 @@
         gender: this.state.gender,
         location: this.state.location,
         website: this.state.website,
+        description: this.state.description,
       };
       this.props.updateProfileData(data, this.props.user.profile.id);
     };

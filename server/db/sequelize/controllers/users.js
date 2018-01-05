@@ -48,7 +48,7 @@ export function signUp(req, res, next) {
     return user.save().then(() => {
       req.logIn(user, (err) => {
         if (err) return res.sendStatus(401);
-        return res.sendStatus(200);
+        return res.json(user);
       });
     });
   }).catch(err =>

@@ -36,6 +36,10 @@ export default (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       defaultValue: ''
     },
+    description: {
+      type: DataTypes.STRING,
+      defaultValue: ''
+    },
     location: {
       type: DataTypes.STRING,
       defaultValue: ''
@@ -74,7 +78,8 @@ export default (sequelize, DataTypes) => {
             gender: this.gender,
             location: this.location,
             website: this.website,
-            picture: this.picture
+            picture: this.picture,
+            description: this.description,
           }
         };
       }
