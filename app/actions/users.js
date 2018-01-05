@@ -14,6 +14,12 @@ function loginSuccess(message) {
   };
 }
 
+function setProfileData(data) {
+  return {
+    type: types.SET_USER_PROFILE_SUCCESS,
+    data
+  };
+}
 function loginError(message) {
   return {
     type: types.LOGIN_ERROR_USER,
@@ -68,6 +74,7 @@ export function manualLogin(data) {
     return authService().login(data)
       .then((response) => {
           dispatch(loginSuccess('You have been successfully logged in'));
+          dispatch(setProfileData(response.data));
           dispatch(goBack);
       })
       .catch((err) => {

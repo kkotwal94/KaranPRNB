@@ -70,6 +70,7 @@ const profile = (
       return state;
     case types.REQUEST_USER_PROFILE_SUCCESS:
       return action.data;
+    case types.SET_USER_PROFILE_SUCCESS:
     case types.UPDATE_USER_PROFILE_SUCCESS:
       return Object.assign(state, action.data);
     case types.REQUEST_USER_PROFILE_ERROR:

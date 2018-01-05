@@ -14,10 +14,12 @@ export default function message(state = {
     case types.LOGIN_SUCCESS_USER:
     case types.SIGNUP_SUCCESS_USER:
     case types.LOGOUT_SUCCESS_USER:
+    case types.UPDATE_USER_PROFILE_SUCCESS:
       return {...state, message: action.message, type: 'SUCCESS', open: true};
     case types.LOGIN_ERROR_USER:
     case types.SIGNUP_ERROR_USER:
     case types.LOGOUT_ERROR_USER:
+    case types.UPDATE_USER_PROFILE_ERROR:
       return {...state, message: action.message, type: 'ERROR', open: true};
     case types.DISMISS_MESSAGE:
       return {...state, message: '', type: 'SUCCESS', open: false};

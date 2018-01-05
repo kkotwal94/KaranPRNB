@@ -18,12 +18,12 @@ function updateUserData() {
   return {type: types.UPDATE_USER_PROFILE};
 }
 
-function updateUserDataSuccess(data) {
-  return {type: types.UPDATE_USER_PROFILE_SUCCESS, data};
+function updateUserDataSuccess(data, message) {
+  return {type: types.UPDATE_USER_PROFILE_SUCCESS, data, message};
 }
 
 function updateUserDataError(error) {
-  return {type: types.UPDATE_USER_PROFILE_ERROR, error};
+  return {type: types.UPDATE_USER_PROFILE_ERROR, message: error};
 }
 
 
@@ -48,7 +48,7 @@ export function updateProfileData(data, id) {
       dispatch(updateUserData());
       return userService().updateUser(data, id)
         .then(() => {
-          dispatch(updateUserDataSuccess(data));
+          dispatch(updateUserDataSuccess(data, 'Profile updated!'));
         })
         .catch((err) => {
           console.log(err);
