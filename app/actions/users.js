@@ -1,4 +1,4 @@
-import { goBack } from 'react-router-redux';
+import { goBack, push } from 'react-router-redux';
 import { authService } from '../services';
 
 import * as types from '../types';
@@ -75,7 +75,7 @@ export function manualLogin(data) {
       .then((response) => {
           dispatch(loginSuccess('You have been successfully logged in'));
           dispatch(setProfileData(response.data));
-          dispatch(goBack);
+          // dispatch(goBack);
       })
       .catch((err) => {
         dispatch(loginError('Oops! Invalid username or password'));
@@ -84,7 +84,6 @@ export function manualLogin(data) {
 }
 
 export function signUp(data) {
-  console.log("Sign up action");
   return (dispatch) => {
     dispatch(beginSignUp());
 
@@ -92,7 +91,7 @@ export function signUp(data) {
       .then((response) => {
           dispatch(signUpSuccess('You have successfully registered an account!'));
           dispatch(setProfileData(response.data));
-          dispatch(goBack);
+          // dispatch(goBack);
       })
       .catch((err) => {
         dispatch(signUpError('Oops! Something went wrong when signing up'));
@@ -101,7 +100,6 @@ export function signUp(data) {
 }
 
 export function signUpMismatch(message) {
-  console.log('In mismatch action');
   return (dispatch) => {
     dispatch(signUpError(message));
   };
@@ -114,6 +112,7 @@ export function logOut() {
     return authService().logOut()
       .then((response) => {
           dispatch(logoutSuccess('Logout Successful!'));
+          dispatch(push('/'));
       })
       .catch((err) => {
         dispatch(logoutError('Logout Failed!'));
