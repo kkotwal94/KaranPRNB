@@ -93,6 +93,10 @@ export default (sequelize, DataTypes) => {
           User.belongsToMany(models.Servers, {through: 'ServerMutelist', as: 'MutedUsers'});
           User.belongsToMany(models.User, {through: 'UserFriends', as: 'Friends'});
           User.belongsToMany(models.User, {through: 'UserFollowers', as: 'Followers'});
+          User.belongsToMany(models.Lobbies, {through: 'LobbyBanlist', as: 'LobbyBannedUsers'});
+          User.belongsToMany(models.Lobbies, {through: 'LobbyMutelist', as: 'LobbyMutedUsers'});
+          User.belongsToMany(models.Lobbies, {through: 'LobbyAdmins', as: 'LobbyAdmins'});
+          User.belongsToMany(models.Lobbies, {through: 'LobbyUsers', as: 'LobbyUsers'});
         }
       }
   });

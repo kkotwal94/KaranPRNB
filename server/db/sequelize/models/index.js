@@ -4,6 +4,9 @@ import { ENV } from '../../../../config/env';
 import userModel from './users';
 import serverModel from './servers';
 import genreModel from './genres';
+import lobbyModel from './lobbies';
+import lobbyPolicy from './lobbypolicy';
+import lobbyType from './lobbyType';
 
 const config = sequelizeConfig[ENV];
 
@@ -15,6 +18,9 @@ const sequelize = dbUrl ? new Sequelize(dbUrl) : new Sequelize(config.database, 
 db.User = sequelize.import('User', userModel);
 db.Servers = sequelize.import('Servers', serverModel);
 db.Genres = sequelize.import('Genres', genreModel);
+db.Lobbies = sequelize.import('Lobbies', lobbyModel);
+db.LobbyPolicy = sequelize.import('LobbyPolicy', lobbyPolicy);
+db.LobbyType = sequelize.import('LobbyType', lobbyType);
 Object.keys(db).forEach((key) => {
   const model = db[key];
   if (model.associate) {
