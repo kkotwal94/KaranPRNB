@@ -83,8 +83,20 @@ export default (sequelize, DataTypes) => {
           }
         };
       }
-    }
+    },
+      classMethods: {
+        associate(models) {
+          User.hasOne(models.Servers, {foreignKey: 'id'});
+          User.belongsToMany(models.Servers, {through: 'ServerAdmins', as: 'Admins'});
+          User.belongsToMany(models.Servers, {through: 'ServerUsers', as: 'Users'});
+          User.belongsToMany(models.Servers, {through: 'ServerBanlist', as: 'BannedUsers'});
+          User.belongsToMany(models.Servers, {through: 'ServerMutelist', as: 'MutedUsers'});
+          User.belongsToMany(models.User, {through: 'UserFriends', as: 'Friends'});
+          User.belongsToMany(models.User, {through: 'UserFollowers', as: 'Followers'});
+        }
+      }
   });
+
 
   User.beforeCreate(hashPassword);
   User.beforeUpdate(hashPassword);
