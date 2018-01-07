@@ -12,6 +12,7 @@ export default (sequelize, DataTypes) => {
       associate(models) {
         Lobbies.hasOne(models.LobbyPolicy);
         Lobbies.hasOne(models.LobbyType);
+        Lobbies.hasMany(models.Queue);
         Lobbies.belongsToMany(models.User, {through: 'LobbyBanlist', as: 'LobbyBannedUsers'});
         Lobbies.belongsToMany(models.User, {through: 'LobbyMutelist', as: 'LobbyMutedUsers'});
         Lobbies.belongsToMany(models.User, {through: 'LobbyAdmins', as: 'LobbyAdmins'});

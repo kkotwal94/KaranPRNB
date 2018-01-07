@@ -97,6 +97,9 @@ export default (sequelize, DataTypes) => {
           User.belongsToMany(models.Lobbies, {through: 'LobbyMutelist', as: 'LobbyMutedUsers'});
           User.belongsToMany(models.Lobbies, {through: 'LobbyAdmins', as: 'LobbyAdmins'});
           User.belongsToMany(models.Lobbies, {through: 'LobbyUsers', as: 'LobbyUsers'});
+          User.hasMany(models.Playlists);
+          User.hasMany(models.QueueRules);
+          User.hasMany(models.Votes);
         }
       }
   });
